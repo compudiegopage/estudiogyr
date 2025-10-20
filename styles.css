@@ -352,3 +352,94 @@ body{
 @media (min-width:721px){
   .hamburger{display:none}
 }
+@media (max-width:720px){
+  .nav{
+    position:absolute;
+    top:85px; /* antes estaba 64px — ajustamos según la altura real del header */
+    left:0;
+    right:0;
+    background:var(--primary);
+    border-top:1px solid #007a99;
+    display:block; /* mantenemos visible pero controlamos con opacidad */
+    opacity:0;
+    max-height:0;
+    overflow:hidden;
+    transform: translateY(-10px);
+    transition: all 0.35s ease;
+    z-index:70;
+  }
+
+  .nav.open{
+    opacity:1;
+    max-height:400px; /* suficiente para mostrar todos los enlaces */
+    transform: translateY(0);
+  }
+
+  .nav ul{
+    flex-direction:column;
+    padding:1rem;
+    gap:0.8rem;
+  }
+
+  .hamburger{display:block}
+  .footer-grid{flex-direction:column; align-items:flex-start}
+}
+.nav {
+  position:absolute;
+  top:85px;
+}
+/* MENU MOVIL */
+@media (max-width:720px){
+  .nav{
+    position:absolute;
+    top:100%; /* justo debajo del header */
+    left:0;
+    right:0;
+    background:var(--primary);
+    border-top:1px solid #007a99;
+    display:block;
+    opacity:0;
+    max-height:0;
+    overflow:hidden;
+    transform: translateY(-10px);
+    transition: all 0.35s ease;
+    z-index:70;
+  }
+
+  .nav.open{
+    opacity:1;
+    max-height:400px; /* ajustá según la cantidad de links */
+    transform: translateY(0);
+  }
+
+  .nav ul{
+    flex-direction:column;
+    padding:1rem;
+    gap:0.8rem;
+  }
+}
+/* MENU ESCRITORIO */
+@media (min-width:721px){
+  .nav{
+    position:static; /* sin top, sin overlay */
+    display:flex;
+    opacity:1;
+    max-height:none;
+    transform:none;
+  }
+
+  .nav ul{
+    flex-direction:row;
+    gap:1rem;
+    padding:0;
+  }
+
+  .hamburger{display:none}
+  .nav-container{
+  display:flex;
+  align-items:center;
+  justify-content:space-between; /* <-- aquí está separando logo y nav */
+  padding:0.8rem 0;
+}
+
+}
