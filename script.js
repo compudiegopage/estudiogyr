@@ -37,53 +37,29 @@ document.querySelectorAll('.nav-link').forEach(link => {
   });
 });
 
-// --- Poner año actual en footer
-const yearEl = document.getElementById('year');
-if (yearEl) yearEl.textContent = new Date().getFullYear();
 
-// --- EMAILJS (plantilla)
-// 1) Incluí en el HTML la librería (ya la agregué):
-//    <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
-// 2) Inicializá con tu USER_ID (reemplazar 'TU_USER_ID'):
-//    emailjs.init('TU_USER_ID');
-
-// Ejemplo de inicialización (comentado):
-// (function(){ emailjs.init('TU_USER_ID'); })();
-
-// sendEmail: usa emailjs.sendForm('SERVICE_ID','TEMPLATE_ID', '#form-contact')
 function sendEmail(e) {
   e.preventDefault();
   if (!formStatus) return;
 
   formStatus.textContent = 'Enviando...';
 
-  // Si querés probar sin EmailJS: simulamos
-  // BORRAR este bloque cuando integres EmailJS real
-  setTimeout(() => {
-    formStatus.textContent = 'Mensaje enviado (simulado). Reemplazar con EmailJS en script.js';
-    if (form) form.reset();
-  }, 900);
-
-  /* Ejemplo real con EmailJS (descomentar y completar IDs):
+  // Verifica que EmailJS esté cargado
   if (typeof emailjs === 'undefined') {
     formStatus.textContent = 'Error: EmailJS no está cargado.';
     return;
   }
 
-  emailjs.sendForm('TU_SERVICE_ID', 'TU_TEMPLATE_ID', '#form-contact')
+  // Envía el formulario
+  emailjs.sendForm('service_fdpnxyi', 'template_9bvt898', '#form-contact')
     .then(function(response) {
+       console.log('SUCCESS!', response.status, response.text);
        formStatus.textContent = 'Mensaje enviado. Gracias!';
-       if (form) form.reset();
+       form.reset(); // limpia el formulario
     }, function(error) {
        console.error('EmailJS error:', error);
        formStatus.textContent = 'Error al enviar. Intentá nuevamente.';
     });
-  */
-}
-
-// Enlace el handler al formulario
-if (form) {
-  form.addEventListener('submit', sendEmail);
 }
 
 // --- Mejoras opcionales: cerrar nav al click fuera (móvil)
@@ -95,3 +71,22 @@ document.addEventListener('click', (e) => {
     btnMenu.setAttribute('aria-expanded', 'false');
   }
 });
+// Animaciones al hacer scroll
+document.addEventListener("DOMContentLoaded", () => {
+  const elements = document.querySelectorAll(".fade-in-up");
+
+  const observer = new IntersectionObserver(
+    entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+        }
+      });
+    },
+    { threshold: 0.15 }
+  );
+
+  elements.forEach(el => observer.observe(el));
+});
+// Inicializar EmailJS
+emailjs.init("uTn3KW7p_v0tEukSm"); // reemplazar TU_USER_ID por el ID real
