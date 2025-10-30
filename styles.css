@@ -145,7 +145,7 @@ p {
 .hero-image img{width:100%; height:auto; border-radius:8px; display:block}
 
 /* QUIENES */
-.section{padding:2rem 0}
+.section{padding:0.6rem 0}
 .socias-grid{
   display:grid;
   grid-template-columns:1fr 1fr;
@@ -515,4 +515,33 @@ p {
 @keyframes slideDown {
   from { transform: translateY(-100%); opacity: 0; }
   to { transform: translateY(0); opacity: 1; }
+}
+.socia img {
+  width: 100%;
+  height: auto;             /* se adapta a la proporción original */
+  max-height: 420px;        /* límite para que no se agrande demasiado */
+  object-fit: contain;      /* muestra toda la imagen sin recorte */
+  background-color: #f0fbff; /* color de fondo suave detrás si sobran bordes */
+  border-radius: 6px;
+  display: block;
+  margin: 0 auto;
+  transition: transform 0.5s ease, box-shadow 0.5s ease;
+}
+
+.socia img:hover {
+  transform: scale(1.03);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.12);
+}
+.card img {
+  width: 100%;
+  height: 220px;            /* alto fijo para uniformidad */
+  object-fit: cover;        /* recorta bordes si hace falta */
+  object-position: center;  /* centra el recorte */
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+  transition: transform 0.4s ease;
+}
+
+.card:hover img {
+  transform: scale(1.05);
 }
