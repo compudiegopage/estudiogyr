@@ -149,7 +149,7 @@ p {
 .hero-image img{width:100%; height:auto; border-radius:8px; display:block}
 
 /* QUIENES */
-.section{padding:0.6rem 0}
+.section{padding:1.5rem 0}
 .socias-grid{
   display:grid;
   grid-template-columns:1fr 1fr;
