@@ -19,6 +19,10 @@ body{
 }
 p {
   text-align: justify;
+  text-justify: inter-word; /* modo más equilibrado */
+  hyphens: auto;            /* permite cortes automáticos de palabras */
+  line-height: 1.6;
+  word-spacing: normal;     /* evita separación excesiva */
 }
 
 .container{
