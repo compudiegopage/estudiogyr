@@ -89,4 +89,17 @@ document.addEventListener("DOMContentLoaded", () => {
   elements.forEach(el => observer.observe(el));
 });
 // Inicializar EmailJS
-emailjs.init("uTn3KW7p_v0tEukSm"); // reemplazar TU_USER_ID por el ID real
+emailjs.init("uTn3KW7p_v0tEukSm");
+
+window.addEventListener("scroll", () => {
+  const footer = document.querySelector(".site-footer");
+  const whatsapp = document.querySelector(".whatsapp-float");
+  const footerTop = footer.getBoundingClientRect().top;
+  const windowHeight = window.innerHeight;
+
+  if (footerTop < windowHeight) {
+    whatsapp.style.bottom = `${windowHeight - footerTop + 20}px`; // sube cuando se acerca al footer
+  } else {
+    whatsapp.style.bottom = "20px";
+  }
+});
